@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-refrigerators-skye" version="1.0.0">
+   <name>SkyeSDKRefrigerators</name>
+   <js-module name="SkyeSDKRefrigerators" src="www/SkyeSDKRefrigerators.js">
+      <clobbers target="SkyeSDKRefrigerators" />
+   </js-module>
+   <platform name="android">
+      <config-file parent="/*" target="res/xml/config.xml">
+         <feature name="SkyeSDKRefrigerators">
+            <param name="android-package" value="cordova.plugin.refrigerators.skye.SkyeSDKRefrigerators" />
+         </feature>
+      </config-file>
+      <config-file parent="/*" target="AndroidManifest.xml" />
+      <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+        <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+        <uses-permission android:name="android.permission.BLUETOOTH" />
+        <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+        <uses-permission android:name="android.permission.INTERNET" />
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+      </edit-config>
+      <source-file src="src/android/SkyeSDKRefrigerators.java" target-dir="src/cordova/plugin/refrigerators/skye/SkyeSDKRefrigerators" />
+
+      <framework src="src/android/addlibs.gradle" custom="true" type="gradleReference" />
+      <resource-file src="externallibs/scscommunicationsdk.aar" target="libs/scscommunicationsdk.aar" />
+      <resource-file src="externallibs/scstracksdk.aar" target="libs/scstracksdk.aar" />
+   </platform>
+</plugin>
